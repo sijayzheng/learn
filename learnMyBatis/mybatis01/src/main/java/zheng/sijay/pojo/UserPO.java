@@ -5,15 +5,15 @@ package zheng.sijay.pojo;
  */
 public class UserPO {
     private int id;
-    private String username;
+    private String name;
     private String pwd;
 
     public UserPO() {
     }
 
-    public UserPO(int id, String username, String pwd) {
+    public UserPO(int id, String name, String pwd) {
         this.id = id;
-        this.username = username;
+        this.name = name;
         this.pwd = pwd;
     }
 
@@ -25,12 +25,12 @@ public class UserPO {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPwd() {
@@ -39,5 +39,10 @@ public class UserPO {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    @Override
+    public String toString() {
+        return "UserPO{" + "id=" + id + ", name='" + name + '\'' + ", pwd='" + pwd + '\'' + '}';
     }
 }
