@@ -5,9 +5,32 @@
 <!--绑定相应的Mapper接口-->
 <mapper namespace="zheng.sijay.mapper.UserMapper">
     <select id="listUser" resultType="UserPO">
-        select * from user
+        select *
+        from user
     </select>
-    <select id="getUserById" resultType="zheng.sijay.pojo.UserPO">
-        select * from user where id=#{id}
+    <select id="getUserById" resultType="UserPO">
+        select *
+        from user
+        where id = #{id}
     </select>
+    <select id="listUserByName" resultType="UserPO">
+        select *
+        from user
+        where name like #{name};
+    </select>
+    <!--    对象的属性可以直接取出-->
+    <insert id="addUser" parameterType="UserPO">
+        insert into user (id, name, pwd)
+        values (#{id}, #{name}, #{pwd});
+    </insert>
+    <insert id="addOneUser" parameterType="map">
+        insert into user (id, name)
+        values (#{userId}, #{user_name});
+    </insert>
+    <update id="updateUser">
+        update user
+        set name = #{name},
+            pwd=#{pwd}
+        where id = #{id};
+    </update>
 </mapper>
