@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--绑定相应的Mapper接口-->
+<mapper namespace="zheng.sijay.mybatis.mapper.UserMapper">
+    <select id="listUser" resultType="UserPO">
+        select *
+        from user
+    </select>
+    <select id="getUserById" resultType="UserPO">
+        select *
+        from user
+        <trim prefix="where" prefixOverrides="AND|OR">
+            or id = #{id}
+        </trim>
+    </select>
+    <select id="listUserByName" resultType="UserPO">
+        select *
+        from user
+        where name like #{name};
+    </select>
+    <!--    对象的属性可以直接取出-->
+    <insert id="addUser" parameterType="UserPO" useGeneratedKeys="true" keyProperty="id">
+        insert into user (name, pwd)
+        values (#{name}, #{pwd});
+    </insert>
+    <insert id="addOneUser" parameterType="map">
+        insert into user (id, name)
+        values (#{userId}, #{user_name});
+    </insert>
+    <insert id="addUsers" useGeneratedKeys="true" keyProperty="id">
+        insert into user (name)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.name})
+        </foreach>
+    </insert>
+    <update id="updateUser">
+        update user
+        set name = #{name},
+            pwd=#{pwd}
+        where id = #{id};
+    </update>
+</mapper>
