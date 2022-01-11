@@ -11,6 +11,15 @@ public class UserPO {
     public UserPO() {
     }
 
+    public UserPO(String name) {
+        this.name = name;
+    }
+
+    public UserPO(String name, String pwd) {
+        this.name = name;
+        this.pwd = pwd;
+    }
+
     public UserPO(int id, String name, String pwd) {
         this.id = id;
         this.name = name;

@@ -35,7 +35,21 @@ public interface UserMapper {
      */
     int addUser(UserPO user);
 
+    /**
+     * 添加一个
+     *
+     * @param map
+     * @return
+     */
     int addOneUser(Map<String, Object> map);
+
+    /**
+     * 批量添加
+     *
+     * @param list
+     * @return
+     */
+    int addUsers(List<UserPO> list);
 
     /**
      * 修改

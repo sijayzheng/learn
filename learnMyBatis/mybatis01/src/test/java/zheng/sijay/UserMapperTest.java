@@ -6,8 +6,11 @@ import zheng.sijay.mapper.UserMapper;
 import zheng.sijay.pojo.UserPO;
 import zheng.sijay.utils.MyBatisUtils;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author 郑世杰
@@ -62,9 +65,29 @@ public class UserMapperTest {
         try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
             // 获取接口
             UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-            UserPO po = new UserPO(11, "jan", "123456");
+            UserPO po = new UserPO("testttt", "123456");
             // 执行SQL
             System.out.println(mapper.addUser(po));
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void addUsers() {
+        // 从 SqlSessionFactory 中获取 SqlSession
+        try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
+            List<UserPO> userList = Arrays.asList(1, 2, 3, 4, 5, 6).stream().map(e -> new UserPO("user" + e)).collect(Collectors.toList());
+            // 获取接口
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            // 执行SQL
+            int i = mapper.addUsers(userList);
+            System.out.println(i);
+            for (UserPO po : userList) {
+                System.out.println(po.getId());
+
+            }
             sqlSession.commit();
         } catch (Exception e) {
             e.printStackTrace();
