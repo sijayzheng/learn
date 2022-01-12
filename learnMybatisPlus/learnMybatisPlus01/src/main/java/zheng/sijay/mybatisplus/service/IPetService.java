@@ -1,10 +1,10 @@
 package zheng.sijay.mybatisplus.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import zheng.sijay.mybatisplus.domain.User;
+import zheng.sijay.mybatisplus.domain.Pet;
 
 /**
  * @author 郑世杰
  */
-public interface IUserService extends IService<User> {
+public interface IPetService extends IService<Pet> {
 }

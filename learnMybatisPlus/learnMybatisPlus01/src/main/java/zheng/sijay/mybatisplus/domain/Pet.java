@@ -6,12 +6,9 @@ import lombok.Data;
  * @author 郑世杰
  */
 @Data
-public class User {
+public class Pet {
     private Integer id;
     private String name;
-    private String pwd;
-
-    public User(String name) {
-        this.name = name;
-    }
+    private String type;
+    private Integer age;
 }
