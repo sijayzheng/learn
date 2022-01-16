@@ -5,7 +5,7 @@
 <!--绑定相应的Mapper接口-->
 <mapper namespace="zheng.sijay.mybatis.mapper.UserMapper">
     <select id="listUser" resultType="UserPO">
-        select *
+        select id, name, pwd
         from user
     </select>
     <select id="getUserById" resultType="UserPO">
@@ -42,4 +42,10 @@
             pwd=#{pwd}
         where id = #{id};
     </update>
+
+    <select id="pageList" parameterType="map" resultType="userPO">
+        select *
+        from user
+        limit #{start}, #{size};
+    </select>
 </mapper>

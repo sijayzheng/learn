@@ -78,8 +78,8 @@ public class UserMapperTest {
     public void addUsers() {
         // 从 SqlSessionFactory 中获取 SqlSession
         try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
-            List<UserPO> userList = Stream.of(1, 2, 3, 4, 5, 6)
-                                          .map(e -> new UserPO("user" + e)).collect(Collectors.toList());
+            List<UserPO> userList = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+                    .map(e -> new UserPO("user" + e)).collect(Collectors.toList());
             // 获取接口
             UserMapper mapper = sqlSession.getMapper(UserMapper.class);
             // 执行SQL
@@ -141,4 +141,20 @@ public class UserMapperTest {
         }
     }
 
+    @Test
+    public void listPage() {
+        // 从 SqlSessionFactory 中获取 SqlSession
+        try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
+            // 获取接口
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            Map<String, Integer> map = new HashMap<>();
+            map.put("start", 2);
+            map.put("size", 2);
+            // 执行SQL
+            System.out.println(mapper.pageList(map));
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

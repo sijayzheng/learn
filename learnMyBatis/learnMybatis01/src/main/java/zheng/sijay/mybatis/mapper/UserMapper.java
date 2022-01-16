@@ -1,6 +1,7 @@
 package zheng.sijay.mybatis.mapper;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Mapper;
 import zheng.sijay.mybatis.pojo.UserPO;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Map;
 /**
  * @author 郑世杰
  */
+@Mapper
 public interface UserMapper {
     /**
      * 获取所有用户
@@ -67,4 +69,7 @@ public interface UserMapper {
      */
     @Delete("delete from user where id=#{id}")
     int deleteUser(int id);
+
+    List<UserPO> pageList(Map<String, Integer> map);
+
 }
