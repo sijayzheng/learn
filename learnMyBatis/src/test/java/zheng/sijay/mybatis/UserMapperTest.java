@@ -65,7 +65,7 @@ public class UserMapperTest {
         try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
             // 获取接口
             UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-            UserPO po = new UserPO("testttt", "123456");
+            UserPO po = new UserPO("testUser", "123456");
             // 执行SQL
             System.out.println(mapper.addUser(po));
             sqlSession.commit();
