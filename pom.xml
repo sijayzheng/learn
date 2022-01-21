@@ -14,5 +14,6 @@
         <module>learnMyBatis</module>
         <module>learnMybatisPlus</module>
         <module>learnSpringboot</module>
+        <module>learnLog4j</module>
     </modules>
 </project>

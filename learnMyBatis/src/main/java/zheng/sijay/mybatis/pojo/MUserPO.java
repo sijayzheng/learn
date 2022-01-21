@@ -3,24 +3,24 @@ package zheng.sijay.mybatis.pojo;
 /**
  * @author 郑世杰
  */
-public class UserPO {
+public class MUserPO {
     private int id;
     private String name;
     private String pwd;
 
-    public UserPO() {
+    public MUserPO() {
     }
 
-    public UserPO(String name) {
+    public MUserPO(String name) {
         this.name = name;
     }
 
-    public UserPO(String name, String pwd) {
+    public MUserPO(String name, String pwd) {
         this.name = name;
         this.pwd = pwd;
     }
 
-    public UserPO(int id, String name, String pwd) {
+    public MUserPO(int id, String name, String pwd) {
         this.id = id;
         this.name = name;
         this.pwd = pwd;
@@ -52,6 +52,6 @@ public class UserPO {
 
     @Override
     public String toString() {
-        return "UserPO{" + "id=" + id + ", name='" + name + '\'' + ", pwd='" + pwd + '\'' + '}';
+        return "MUserPO{" + "id=" + id + ", name='" + name + '\'' + ", pwd='" + pwd + '\'' + '}';
     }
 }

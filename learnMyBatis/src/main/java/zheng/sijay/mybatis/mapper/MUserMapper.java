@@ -2,7 +2,7 @@ package zheng.sijay.mybatis.mapper;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
-import zheng.sijay.mybatis.pojo.UserPO;
+import zheng.sijay.mybatis.pojo.MUserPO;
 
 import java.util.List;
 import java.util.Map;
@@ -11,13 +11,13 @@ import java.util.Map;
  * @author 郑世杰
  */
 @Mapper
-public interface UserMapper {
+public interface MUserMapper {
     /**
      * 获取所有用户
      *
      * @return 用户列表
      */
-    List<UserPO> listUser();
+    List<MUserPO> listUser();
 
     /**
      * 根据id查询用户信息
@@ -25,9 +25,9 @@ public interface UserMapper {
      * @param id 用户id
      * @return 用户
      */
-    UserPO getUserById(int id);
+    MUserPO getUserById(int id);
 
-    List<UserPO> listUserByName(String name);
+    List<MUserPO> listUserByName(String name);
 
     /**
      * 添加
@@ -35,7 +35,7 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    int addUser(UserPO user);
+    int addUser(MUserPO user);
 
     /**
      * 添加一个
@@ -51,7 +51,7 @@ public interface UserMapper {
      * @param list
      * @return
      */
-    int addUsers(List<UserPO> list);
+    int addUsers(List<MUserPO> list);
 
     /**
      * 修改
@@ -59,7 +59,7 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    int updateUser(UserPO user);
+    int updateUser(MUserPO user);
 
     /**
      * 删除
@@ -70,6 +70,6 @@ public interface UserMapper {
     @Delete("delete from user where id=#{id}")
     int deleteUser(int id);
 
-    List<UserPO> pageList(Map<String, Integer> map);
+    List<MUserPO> pageList(Map<String, Integer> map);
 
 }

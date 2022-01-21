@@ -2,8 +2,8 @@ package zheng.sijay.mybatis;
 
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
-import zheng.sijay.mybatis.mapper.UserMapper;
-import zheng.sijay.mybatis.pojo.UserPO;
+import zheng.sijay.mybatis.mapper.MUserMapper;
+import zheng.sijay.mybatis.pojo.MUserPO;
 import zheng.sijay.mybatis.utils.MyBatisUtils;
 
 import java.util.HashMap;
@@ -15,13 +15,13 @@ import java.util.stream.Stream;
 /**
  * @author 郑世杰
  */
-public class UserMapperTest {
+public class MUserMapperTest {
     @Test
     public void listUser() {
         // 从 SqlSessionFactory 中获取 SqlSession
         try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
             // 获取接口
-            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            MUserMapper mapper = sqlSession.getMapper(MUserMapper.class);
             // 执行SQL
             // 旧写法，存在类型强制转换
             sqlSession.selectList("zheng.sijay.mybatis.mapper.UserMapper.listUser").forEach(System.out::println);
@@ -37,7 +37,7 @@ public class UserMapperTest {
         // 从 SqlSessionFactory 中获取 SqlSession
         try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
             // 获取接口
-            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            MUserMapper mapper = sqlSession.getMapper(MUserMapper.class);
             // 执行SQL
             // 新写法
             mapper.listUserByName("%u%").forEach(System.out::println);
@@ -51,7 +51,7 @@ public class UserMapperTest {
         // 从 SqlSessionFactory 中获取 SqlSession
         try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
             // 获取接口
-            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            MUserMapper mapper = sqlSession.getMapper(MUserMapper.class);
             // 执行SQL
             System.out.println(mapper.getUserById(2));
         } catch (Exception e) {
@@ -64,8 +64,8 @@ public class UserMapperTest {
         // 从 SqlSessionFactory 中获取 SqlSession
         try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
             // 获取接口
-            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-            UserPO po = new UserPO("testUser", "123456");
+            MUserMapper mapper = sqlSession.getMapper(MUserMapper.class);
+            MUserPO po = new MUserPO("testUser", "123456");
             // 执行SQL
             System.out.println(mapper.addUser(po));
             sqlSession.commit();
@@ -78,14 +78,14 @@ public class UserMapperTest {
     public void addUsers() {
         // 从 SqlSessionFactory 中获取 SqlSession
         try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
-            List<UserPO> userList = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
-                    .map(e -> new UserPO("user" + e)).collect(Collectors.toList());
+            List<MUserPO> userList = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+                                           .map(e -> new MUserPO("user" + e)).collect(Collectors.toList());
             // 获取接口
-            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            MUserMapper mapper = sqlSession.getMapper(MUserMapper.class);
             // 执行SQL
             int i = mapper.addUsers(userList);
             System.out.println(i);
-            for (UserPO po : userList) {
+            for (MUserPO po : userList) {
                 System.out.println(po.getId());
 
             }
@@ -100,8 +100,8 @@ public class UserMapperTest {
         // 从 SqlSessionFactory 中获取 SqlSession
         try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
             // 获取接口
-            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-            UserPO po = new UserPO(10, "tom L", "654321");
+            MUserMapper mapper = sqlSession.getMapper(MUserMapper.class);
+            MUserPO po = new MUserPO(10, "tom L", "654321");
             // 执行SQL
             System.out.println(mapper.updateUser(po));
             sqlSession.commit();
@@ -115,7 +115,7 @@ public class UserMapperTest {
         // 从 SqlSessionFactory 中获取 SqlSession
         try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
             // 获取接口
-            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            MUserMapper mapper = sqlSession.getMapper(MUserMapper.class);
             // 执行SQL
             System.out.println(mapper.deleteUser(3));
             sqlSession.commit();
@@ -129,7 +129,7 @@ public class UserMapperTest {
         // 从 SqlSessionFactory 中获取 SqlSession
         try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
             // 获取接口
-            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            MUserMapper mapper = sqlSession.getMapper(MUserMapper.class);
             Map<String, Object> map = new HashMap<>();
             map.put("userId", 13);
             map.put("user_name", "usernames");
@@ -146,7 +146,7 @@ public class UserMapperTest {
         // 从 SqlSessionFactory 中获取 SqlSession
         try (SqlSession sqlSession = MyBatisUtils.getSqlSessionFactory().openSession()) {
             // 获取接口
-            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            MUserMapper mapper = sqlSession.getMapper(MUserMapper.class);
             Map<String, Integer> map = new HashMap<>();
             map.put("start", 2);
             map.put("size", 2);
