@@ -24,7 +24,7 @@ public class MUserMapperTest {
             MUserMapper mapper = sqlSession.getMapper(MUserMapper.class);
             // 执行SQL
             // 旧写法，存在类型强制转换
-            sqlSession.selectList("zheng.sijay.mybatis.mapper.UserMapper.listUser").forEach(System.out::println);
+            sqlSession.selectList("zheng.sijay.mybatis.mapper.MUserMapper.listUser").forEach(System.out::println);
             // 新写法
             mapper.listUser().forEach(System.out::println);
         } catch (Exception e) {
@@ -39,7 +39,6 @@ public class MUserMapperTest {
             // 获取接口
             MUserMapper mapper = sqlSession.getMapper(MUserMapper.class);
             // 执行SQL
-            // 新写法
             mapper.listUserByName("%u%").forEach(System.out::println);
         } catch (Exception e) {
             e.printStackTrace();
