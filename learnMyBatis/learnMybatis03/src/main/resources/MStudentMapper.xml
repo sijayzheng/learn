@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--绑定相应的Mapper接口-->
-<mapper namespace="zheng.sijay.mybatis.mapper.MStudentMapper">
+<mapper namespace="zheng.sijay.mybatis.mapper.SelectMapper">
     <!--查询所有学生信息-->
     <select id="listStudent" resultMap="students">
         select s.id sid, s.name sname, t.name tname

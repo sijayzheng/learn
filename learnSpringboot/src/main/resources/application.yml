@@ -1,1 +1,15 @@
-
+testconfig:
+  testa: 1
+  testb: 'adasb.asdgs.ga'
+  users:
+    - a
+    - b
+    - c
+    - d
+    - e
+    - f
+    - g
+spring:
+  devtools:
+    livereload:
+      enabled: true

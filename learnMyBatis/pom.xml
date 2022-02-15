@@ -10,6 +10,7 @@
         <module>learnMybatis01</module>
         <module>learnMybatis02</module>
         <module>learnMybatis03</module>
+        <module>learnMybatis04</module>
     </modules>
     <groupId>zheng.sijay</groupId>
     <version>1.0-SNAPSHOT</version>

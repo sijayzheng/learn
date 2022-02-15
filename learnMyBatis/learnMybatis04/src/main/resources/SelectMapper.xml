@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--绑定相应的Mapper接口-->
+<mapper namespace="zheng.sijay.mybatis.mapper.SelectMapper">
+    <!--查询所有-->
+    <select id="listAll" resultType="java.util.LinkedHashMap">
+        select *
+        from ${tableName}
+        <where>
+            <choose>
+                <when test="p1=='all'">
+                    <choose>
+                        <when test="p2=='p1'||p2=='p2'">
+                            or id =3
+                        </when>
+                        <otherwise>
+                            or id =4
+                        </otherwise>
+                    </choose>
+                    or id =1
+                </when>
+                <otherwise>
+                    <choose>
+                        <when test="p2=='p1'||p2=='p2'">
+                            or id =3
+                        </when>
+                        <otherwise>
+                            or id =4
+                        </otherwise>
+                    </choose>
+                    or id=2
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+</mapper>
