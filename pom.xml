@@ -20,5 +20,7 @@
         <module>learnMybatisPlus</module>
         <module>learnSpringboot</module>
         <module>learnLog4j</module>
+        <module>learnSpring</module>
+        <module>learnSpringCloud</module>
     </modules>
 </project>

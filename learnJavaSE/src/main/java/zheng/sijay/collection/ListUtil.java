@@ -8,7 +8,7 @@ import java.util.stream.Collector;
  * @author 郑世杰
  * @date 2022/1/19 22:21
  */
-public class ListStream {
+public class ListUtil {
     public static void main(String[] args) {
         HashMap<String, String> map1 = new HashMap<>();
         map1.put("1", "a");
