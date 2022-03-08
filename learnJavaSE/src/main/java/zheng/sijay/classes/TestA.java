@@ -1,28 +1,48 @@
 package zheng.sijay.classes;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+
 /**
  * @author 郑世杰
  */
 public class TestA {
     public static void main(String[] args) throws Exception {
         Class<User> clazz = User.class;
-        User user = clazz.getDeclaredConstructor(int.class, String.class)
-                         .newInstance(100, "username");
-        // Method getName = clazz.getDeclaredMethod("getName");
-        // Object invoke = getName.invoke(user);
-        // System.out.println("invoke=" + invoke);
-        // Method setName = clazz.getDeclaredMethod("setName", String.class);
-        // Object newUserName = setName.invoke(user, "newUserName");
-        // System.out.println("newUserName=" + newUserName);
-        clazz.getDeclaredMethod("print")
-             .setAccessible(true);
-        // clazz.getConstructors()
+        // 获取构造器
+        clazz.getConstructors();
+        clazz.getConstructor(int.class, String.class);
+        clazz.getDeclaredConstructors();
+        Constructor<User> constructor = clazz.getDeclaredConstructor(int.class, String.class);
+
+        //获取字段
+        clazz.getFields();
+        clazz.getField("publicName");
+        clazz.getDeclaredFields();
+        clazz.getDeclaredField("name");
+
+        //获取方法
+        clazz.getMethods();
+        clazz.getMethod("getId");
+        clazz.getDeclaredMethods();
+        clazz.getDeclaredMethod("getName");
+
+
+        User user = constructor.newInstance(100, "username");
+
+        Method print = clazz.getDeclaredMethod("print");
+        print.setAccessible(false);
+        print.invoke(user);
+        Method prints = clazz.getDeclaredMethod("prints");
+        prints.setAccessible(false);
+        prints.invoke(user);
     }
 }
 
 class User {
     private int id;
     private String name;
+    public String publicName;
 
     public User() {
     }
@@ -34,6 +54,10 @@ class User {
 
     public static void print() {
         System.out.println("haahaaa");
+    }
+
+    private static void prints() {
+        System.out.println("23333333333333333");
     }
 
     public int getId() {
@@ -50,5 +74,13 @@ class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPublicName() {
+        return publicName;
+    }
+
+    public void setPublicName(String publicName) {
+        this.publicName = publicName;
     }
 }
