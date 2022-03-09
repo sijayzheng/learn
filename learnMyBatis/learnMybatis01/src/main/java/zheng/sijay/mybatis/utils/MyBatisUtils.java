@@ -20,8 +20,8 @@ public class MyBatisUtils {
             String resource = "mybatis-config.xml";
             InputStream inputStream = Resources.getResourceAsStream(resource);
             Properties properties = new Properties();
-            properties.put("","");
-            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream,properties);
+            properties.put("", "");
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream, properties);
         } catch (IOException e) {
             e.printStackTrace();
         }
